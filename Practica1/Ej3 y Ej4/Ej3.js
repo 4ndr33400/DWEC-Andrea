@@ -21,7 +21,8 @@ function calcularSalario() {
     }
 
     let resultado = `
-        Nombre:< ${nombre}<br>
+    <strong><h2> Este es su salario </h2></strong><br>
+        Nombre: ${nombre}<br>
         Apellidos: ${apellidos}<br>
         Edad: ${edad}<br>
         Salario actualizado: ${salario.toFixed(2)}
