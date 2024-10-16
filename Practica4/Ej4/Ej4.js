@@ -14,3 +14,4 @@ function allPrimeNumbersFrom1To100() {
     }
     document.getElementById('result').textContent = primeNumbers;
 }
+allPrimeNumbersFrom1To100();
