@@ -5,8 +5,8 @@ function verifyNumbers() {
     const message = document.getElementById("message");
 
     if (number1 < 10 || number2 < 10 || number3 < 10) {
-        message.textContent = "Some of the numbers are lower than 10";
+        message.textContent = "Algun numero es menor a 10";
     } else {
-        message.textContent = "All numbers are greater than 10";
+        message.textContent = "Todos los numeros son mayores a 10";
     }
 }

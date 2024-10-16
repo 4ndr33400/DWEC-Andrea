@@ -1,10 +1,14 @@
 function throwDice() {
+    let resultElement = document.getElementById("result"); 
     let tries = 0;
     let number;
+    let resultText = ""; 
     do {
-        number = Math.floor(Math.random() * 5) + 1;  
+        number = Math.floor(Math.random() * 6) + 1; 
         tries++;
-        console.log("You got the number: " + number);
-    } while (number % 2 !== 0);  
-    console.log(` I've got an even number after ${tries} tries.`);
+        resultText += `Tirada ${tries}: Numero :${number}<br>`; 
+    } while (number % 2 !== 0);
+
+    resultText += `Conseguiste un número par después de ${tries} tiradas.`; 
+    resultElement.innerHTML = resultText; 
 }

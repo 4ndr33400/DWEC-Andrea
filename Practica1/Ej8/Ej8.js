@@ -6,7 +6,7 @@
     pyramidBuilder.addEventListener('click',() =>{
         const number = parseInt(pyramidNumber.value);
         if(isNaN(number) || number <= 0){
-            result.textContent = "Please enter a valid number";
+            result.textContent = "Introduce un numero valido";
             return;
         } 
         let pyramid = "";

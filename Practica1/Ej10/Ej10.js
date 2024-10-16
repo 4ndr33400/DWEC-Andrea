@@ -5,8 +5,8 @@ function verifyChristmas() {
     const month = dateIntroduced.getMonth(); 
 
     if (day === 25 && month === 11) { 
-        message.textContent = "¡IT'S CHRISTMAS!";
+        message.textContent = "¡Es navidad!";
     } else {
-        message.textContent = "it's not christmas :(";
+        message.textContent = "No es navidad :(";
     }
 }

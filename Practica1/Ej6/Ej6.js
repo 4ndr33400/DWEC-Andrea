@@ -8,8 +8,8 @@
         const age = ageInput.value.trim();
         const ageNumber = Number(age);
 
-        if(age.toLowerCase() === 'exit'){
-            result.textContent = `Bye`;
+        if(age.toLowerCase() === 'salir'){
+            result.textContent = `adios`;
             ageInput.value = ``;
             return;
         }
@@ -24,10 +24,10 @@
             } else {
                 category = "elder";
             }
-            result.textContent = `You are a ${category}`;
+            result.textContent = `Eres un@ ${category}`;
     
         } else {
-           result.textContent = `Invalid number`;
+           result.textContent = `Numero invalido`;
         }
     });
     

@@ -8,13 +8,13 @@ greet.addEventListener('click',() =>{
     let greeting;
 
     if(time >= 7 && time < 12){
-        greeting = "Good morning";
+        greeting = "Buenos dias";
     } else if (time >= 12 && time < 20){
-        greeting = "Good noon";
+        greeting = "Buenas tardes";
     } else if (time >= 20 || time <= 2){
-        greeting = "Good night";
+        greeting = "Buenas noches";
     } else {
-        greeting = "Why are you awake?";
+        greeting = "Que haces despiert@ a estas horas?";
     }
 
 result.textContent = greeting ;
