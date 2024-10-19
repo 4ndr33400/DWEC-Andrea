@@ -3,9 +3,9 @@ function matrix(){
     let numberColumns = 3;
     let matrix =[];
 
-    for(let i = 0; i <= numberRows ; i++){
+    for(let i = 0; i < numberRows ; i++){
         matrix[i] = [];
-        for(let j = 0; j <= numberColumns; j++){
+        for(let j = 0; j < numberColumns; j++){
             matrix[i][j] = Math.floor(Math.random() * 100);
         }
     }
