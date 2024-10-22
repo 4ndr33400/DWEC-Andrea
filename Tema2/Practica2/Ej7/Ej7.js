@@ -7,10 +7,12 @@ function loteryGame(){
         }
         return arrayNumbers;
     }
+    function displayLotteryTicket() {
+        document.getElementById("Boleto de loteria ", arrayNumbers.join(", "));
+    }
     
     function checkNumber(){
         let numberGuess = parseInt(document.getElementById("numberGuess").value);
-        let arrayNumbers = generateArrayNumbers();
         let guessResult = document.getElementById("guessResult");
         let numberFound = false;
         
@@ -25,5 +27,7 @@ function loteryGame(){
             guessResult.textContent = `Este numero no esta en el boleto.`;
         }
     }
-    checkNumber();
+    generateArrayNumbers();
+    displayLotteryTicket();
+    document.getElementById("checkButton").onclick = checkNumber();
 }
