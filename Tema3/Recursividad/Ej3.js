@@ -1,10 +1,9 @@
-function numberSum(){
+function numberSum(n){
     //Declarar variable
-    let n = 5;
-    if(n >= 1){
+    if(n <= 1){
         return n;
     } else {
-        return n += numberSum();
+        return n + numberSum(n-1);
     }
 }
-numberSum();
+console.log(numberSum(5));
