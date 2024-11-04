@@ -1,5 +1,5 @@
 let cartesian_dot = {
-    x: 0,
+    x: 5,
     y: 0,
     z: 0,
     _quadrant: 0,
@@ -50,11 +50,14 @@ let cartesian_dot = {
     }
 
 }
-cartesian_dot.x = -5;
+
 cartesian_dot.z = 20;
 cartesian_dot.y = cartesian_dot.x;
 
 console.log("La distancia es: " + cartesian_dot.calculate_distance());
 cartesian_dot.show_coordenates();
 cartesian_dot.show_quadrant();
+
+const jsonString = JSON.stringify(cartesian_dot, null, 2);
+console.log(jsonString);
 
