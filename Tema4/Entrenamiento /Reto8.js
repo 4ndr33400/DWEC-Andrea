@@ -1,5 +1,5 @@
 function validateEmail(email){
-    let expression = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]){2,}$/
+    let expression = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return expression.test(email);
 }
 let email1 = "juan.perez@example.com";
