@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="email" id="introduceEmail" placeholder="Introduce tu email">
+        <p id="emailIntroduceInput"></p>
+        <input type="email" id="repeatEmail" placeholder="Vuelve a introducirla">
+    </form>
+    <script>
+        const emailRegex = /^[a-zA-Z][^@]*@[a-zA-Z]+\.[a-zA-Z]{2,3}$/;
+        const emailErrorRepeat = document.getElementById("repeatEmail");
+        emailErrorRepeat.addEventListener("paste", () =>{
+            event.preventDefault();
+        });
+        const validateEmail = document.getElementById("introduceEmail");
+        const errorMessageEmail = document.getElementById("emailIntroduceInput");
+        validateEmail.addEventListener("blur", () => {
+            if(!emailRegex.test(validateEmail.value)){
+                errorMessageEmail.textContent()
+            }
+        });
+    </script>
+</body>
+</html>
