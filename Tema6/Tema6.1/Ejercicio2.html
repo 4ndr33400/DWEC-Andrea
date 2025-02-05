@@ -5,20 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            align-items: flex-start;
+            border-radius: 8px;
+        }
+        .form-container {
+            margin-left: 20px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        img{
+            width: 300px;
+            height: 200px;
+        }
     </style>
 </head>
 <body>
-    <label for="incidencia">Tipo de incidencia:</label>
-    <select id="incidencia">
-        <option value="distribution">Distribucion</option>
-        <option value="office">Oficina</option>
-        <option value="production">Produccion</option>
-    </select>
-    <label for="serialNumber">Numero de serie</label>
-    <input type="text" id="serialNumber">
-    <label for="description">Descripcion:</label>
-    <textarea id="description"></textarea>
-    <button>Enviar datos</button>
+    <div class="container">
+        <div class="image-container">
+            <img id="incidenceImage" src="https://via.placeholder.com/400x250" alt="">
+        </div>
+        <div class="form-container">
+            <label for="tipo">Tipo de incidencia</label>
+            <select id="tipo">
+                <option value="distribucion">Distribución</option>
+                <option value="logistica">Logística</option>
+                <option value="Oficina">Oficina</option>
+            </select>
+
+            <label for="numero">Número de serie</label>
+            <input type="text" id="numero" placeholder="Escribe el número de serie">
+            <br>
+            <button id="descripcionBtn" type="button">Mostrar descripción</button>
+            <br><br>
+            <button type="submit">Enviar datos</button>
+        </div>
+    </div>
+    <script>
+        const tipoSelect = document.getElementById('tipo');
+        const image = document.getElementById('incidenceImage');
+
+        tipoSelect.addEventListener('change', () => {
+            const tipo = tipoSelect.value;
+
+            switch (tipo) {
+                case 'distribucion':
+                    image.src = 'Images/muelle.png';
+                    break;
+                case 'logistica':
+                    image.src = 'Images/factory.jpg';
+                    break;
+                case 'Oficina':
+                    image.src = 'Images/office.jpg';
+                    break;
+                default:
+                    image.src = 'https://via.placeholder.com/400x250';
+                    break;
+            }
+        });
+
+        const showTextArea = document.getElementById('descripcionBtn');
+        showTextArea.addEventListener('click', () => {
+            const textarea = document.createElement('textarea');
+            const formContainer = document.querySelector('.form-container');
+            textarea.placeholder = 'Escribe la descripción de la incidencia';
+            textarea.rows = 10;
+            textarea.cols = 30;
+            formContainer.appendChild(textarea);
+            
+        });
+    </script>
 </body>
 </html>

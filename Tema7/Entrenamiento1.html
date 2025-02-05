@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3. PokeAPI</title>
+
+  <link rel="stylesheet" href="Pokemon_3.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <h1>PokeAPI - Pokémon</h1>
+
+  <!-- Filtro de búsqueda -->
+  <div id="searchContainer">
+    <label for="searchInput"><b>Buscar Pokemon:</b></label>
+    <input type="text" id="searchInput" placeholder="Escribe el nombre del Pokémon..." onkeyup="filtrarPokemon()">
+  </div>
+
+  <p id="loadingMessage">Cargando Pokemon...</p>
+
+  <table id="pokemonTable">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Imagen</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Las filas de Pokemon se llenarán aquí -->
+    </tbody>
+  </table>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    // URL base de la API de PokeAPI
+    const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=20';
+
+    $(document).ready(function () {
+      cargarPokemon();
+
+      // Función para cargar los Pokémon desde la API
+      function cargarPokemon() {
+        $('#loadingMessage').show();
+        $.get(apiUrl, function (data) {
+          $('#loadingMessage').hide();
+          mostrarPokemon(data.results);
+        }).fail(function () {
+          $('#loadingMessage').hide();
+          alert('Error al cargar los Pokémon');
+        });
+      }
+
+      // Función para mostrar los Pokemon en la tabla
+      function mostrarPokemon(pokemons) {
+        $('#pokemonTable tbody').empty(); // Limpiar la tabla antes de agregar nuevos Pokémon
+
+        pokemons.forEach(pokemon => {
+          $.get(pokemon.url, function (details) {
+            const nombre = pokemon.name;
+            // Imagen:
+            // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{id}.png
+            // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png
+            const imagen = details.sprites.front_default; // Usar la imagen del sprite de frente
+            const fila = `<tr>
+                          <td>${nombre}</td>
+                          <td><img src="${imagen}" alt="${nombre}"></td>
+                         </tr>`;
+            $('#pokemonTable tbody').append(fila);
+          });
+        });
+      }
+
+      // Función para filtrar los Pokémon por nombre
+      window.filtrarPokemon = function () {
+        const input = $('#searchInput').val().toLowerCase();
+        $('#pokemonTable tbody tr').each(function () {
+          const nombrePokemon = $(this).find('td').eq(0).text().toLowerCase();
+          if (nombrePokemon.indexOf(input) > -1) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      };
+    });
+  </script>
+
+</body>
+</html>

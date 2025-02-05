@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PokeAPI con jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>Lista de Pokemons</h1>
+    
+  <!-- Tabla para mostrar los Pokémon -->
+  <table id="pokemonTable" border="1">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>URL</th>
+        <th>Base Experience</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí se llenarán los datos con jQuery -->
+    </tbody>
+  </table>
+
+  <script>
+    /* Función para agregar Pokémon a la tabla con su experiencia base */
+    function agregarFilaPokemon(pokemon) {
+      const fila = $("<tr></tr>");
+      const nombreCelda = $("<td></td>").text(pokemon.name);
+
+      // Celda para la URL como enlace
+      const urlCelda = $("<td></td>");
+      const enlace = $("<a></a>")
+        .attr("href", pokemon.url)
+        .text(pokemon.url)
+        .attr("target", "_blank");
+      urlCelda.append(enlace);
+
+      // Celda para la experiencia base (se llenará tras la segunda petición)
+      const expCelda = $("<td></td>").text("Cargando...");
+
+      // Agregamos las celdas a la fila
+      fila.append(nombreCelda, urlCelda, expCelda);
+      $('#pokemonTable tbody').append(fila);
+
+      // Hacemos una segunda petición para obtener la experiencia base
+      $.get(pokemon.url, function(detallePokemon) {
+        expCelda.text(detallePokemon.base_experience);
+      });
+    }
+
+    $(document).ready(function() {
+      const url = "https://pokeapi.co/api/v2/pokemon/";
+
+      // Hacemos la petición GET a la API
+      $.get(url, function(data) {
+        console.log(data); // Ver la respuesta en la consola
+
+        // Iteramos sobre cada Pokémon y llamamos a la función para agregar la fila
+        data.results.forEach(agregarFilaPokemon);
+      });
+    });
+  </script>
+</body>
+</html>
